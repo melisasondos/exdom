@@ -1,0 +1,104 @@
+{
+ "frozen_at": "2026-10-15T19:41:23.144683+00:00",
+ "pipeline_version": "1.0",
+ "llm": {
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "temperature": 0.1,
+  "runs": 2,
+  "seed_base": 1234,
+  "prompt_sha8": "754c50e5"
+ },
+ "rule_conf": {
+  "R0": 0.95,
+  "R1": 0.7,
+  "R2": 0.7,
+  "R3": 0.8
+ },
+ "base_weights": {
+  "rule": 0.45,
+  "glossary": 0.2,
+  "support": 0.2,
+  "llm": 0.15
+ },
+ "grid": {
+  "w_rule": [
+   0.15,
+   0.3,
+   0.45
+  ],
+  "w_llm": [
+   0.15,
+   0.3,
+   0.45
+  ],
+  "pen": [
+   0.8,
+   1.0
+  ],
+  "cap": [
+   5,
+   12
+  ],
+  "t_acc": [
+   0.3,
+   0.35,
+   0.4,
+   0.45,
+   0.5,
+   0.55,
+   0.6
+  ]
+ },
+ "split": {
+  "seed": 13,
+  "dev": [
+   "fishchips",
+   "sports",
+   "school",
+   "ticket",
+   "recycling"
+  ],
+  "test": [
+   "planningpoker",
+   "camperplus",
+   "grocery",
+   "supermarket"
+  ]
+ },
+ "selection": "argmax of macro class-F1 (relaxed matching) over the grid, on DEV only",
+ "variants": {
+  "rules + scoring": {
+   "config": {
+    "w_rule": 0.15,
+    "w_llm": 0.15,
+    "pen": 1.0,
+    "cap": 5.0,
+    "t_acc": 0.45
+   },
+   "dev_macro_F1": 0.427,
+   "dev_lopo_F1": 0.395
+  },
+  "LLM + scoring": {
+   "config": {
+    "w_rule": 0.15,
+    "w_llm": 0.15,
+    "pen": 0.8,
+    "cap": 5.0,
+    "t_acc": 0.3
+   },
+   "dev_macro_F1": 0.431,
+   "dev_lopo_F1": 0.396
+  },
+  "EXDOM (both)": {
+   "config": {
+    "w_rule": 0.15,
+    "w_llm": 0.15,
+    "pen": 0.8,
+    "cap": 12.0,
+    "t_acc": 0.6
+   },
+   "dev_macro_F1": 0.517,
+   "dev_lopo_F1": 0.47
+  }
+ }
+}
